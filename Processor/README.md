@@ -5,7 +5,7 @@
 ## Introduction
 TNAC is intended to be an education tool to teach courses in Computer Architecture and Compiler Design. Its a simulator for a basic computer which comes with its own memory - simulated - and a small OS.
 
-TNAC is the result of my undergraduate degree project. So if you're a recruiter and coming here from my resume, it was named ProcessK. No, I didn't provide you link to a random GitHub and passed it off as mine.
+TNAC is the result of my undergraduate degree project. So if you're a recruiter and coming here from my resume, it was named ProcessK earlier.
 
 ## Documentation: 
 ## Instruction Set 
