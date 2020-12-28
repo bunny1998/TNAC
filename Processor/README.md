@@ -1,5 +1,5 @@
 # TNAC - Tnac is Not A Computer
-## or, This is Not A Computer
+### or, This is Not A Computer
 ### unlike GNU, this recursive acronym does actually terminate.
 
 ## Introduction
@@ -90,17 +90,23 @@ TNAC is the result of my undergraduate degree project. So if you're a recruiter 
 |:---------:|:--------------------------------------------------------------------------:|:------:|
 |    RES    | Jump to restricted memory, Divide by Zero, Invalid register/flag reference |    1   |
 
+
+
 ## Addressing Modes
-## Register Reference
-    The instruction use the value at the register referred to in the operand. A reference 65 will use the value at register A. This mode will be used with instructions that support this mode and when IndA flag is reset
-## Flag Reference
-    The instructions will use the current state of the flag being referenced. A reference -1 will use the state of Sn flag. If an instruction expects a flag reference and finds something invalid, it triggers TRAP interrupt.
-## Direct
-    The instructions that take adr as their operands use this mode. The value stored at memory location adr will be used. Direct addressing will be used if instruction takes adr as an operand and IndA flag is reset.
-## Indirect
-    The instructions that take adr or register reference may use this mode by setting the IndA flag. When the IndA flag is set, the value at memory location pointed at by the address in register to adr is used. For eg if register A has a value of 2001, and current instruction operand is an indirect register reference of 65, then value at memory[2001]  will be used as operand.
-## Immediate
-    The value to be used is specified directly in the next memory location. No flags are checked for this mode. Most instructions have their corresponding instructions that use immediate addressing.
+### Register Reference
+The instruction use the value at the register referred to in the operand. A reference 65 will use the value at register A. This mode will be used with instructions that support this mode and when IndA flag is reset
+
+### Flag Reference
+The instructions will use the current state of the flag being referenced. A reference -1 will use the state of Sn flag. If an instruction expects a flag reference and finds something invalid, it triggers TRAP interrupt.
+
+### Direct
+The instructions that take adr as their operands use this mode. The value stored at memory location adr will be used. Direct addressing will be used if instruction takes adr as an operand and IndA flag is reset.
+
+### Indirect
+The instructions that take adr or register reference may use this mode by setting the IndA flag. When the IndA flag is set, the value at memory location pointed at by the address in register to adr is used. For eg if register A has a value of 2001, and current instruction operand is an indirect register reference of 65, then value at memory[2001]  will be used as operand.
+
+### Immediate
+The value to be used is specified directly in the next memory location. No flags are checked for this mode. Most instructions have their corresponding instructions that use immediate addressing.
 
 See Instruction Set table above to know which instruction supports which addressing modes.
 
@@ -148,40 +154,40 @@ Write an assembler that targets TNAC. And maybe, just maybe, even a compiler for
 Whatever your heart desires.
 
 ## Assembly code TNAC is initialised with...
-## code for RES at memory[1]
- TRAP would be reset at this point
-1       LRI 4001 SP
-4       RST Tr
-6       RST Sn
-8       RST OF
-10     RST IndA
-12     CLR A
-14     CLR B
-16     CLR C
-18     CLR D
-20     CLR E
-22     CLR F
-24     CLR AC
-26     CLR MAR
-28     CLR MDR
+### code for RES at memory[1]
+ TRAP would be reset at this point<br />
+1       LRI 4001 SP<br />
+4       RST Tr<br />
+6       RST Sn<br />
+8       RST OF<br />
+10     RST IndA<br />
+12     CLR A<br />
+14     CLR B<br />
+16     CLR C<br />
+18     CLR D<br />
+20     CLR E<br />
+22     CLR F<br />
+24     CLR AC<br />
+26     CLR MAR<br />
+28     CLR MDR<br />
 
- ## code for OS at memory[30]
-30  LRI -- A   //load jump location in R1 - execute mode
-33  LR1 -- B  //load jump location in R2 - programming loop
-36  LAI 0        //Load 0 in AC
-38  PMT C     //Prompt choice, 0 - execute, 1 - program mode
-40  IEQ C    //If choice equal to 0
-42  JIT A     //Jump if true to location 1
-44  PMT D     //Prompt for starting adress of programm
-46  OUT D     //echo starting adress
-48  PMT E    //prompt for instruction
-50  SET IndA
-52  CPY E D  //store instruction in memory
-55  RST IndA
-57  INC D     //increment adress pointer
-59  JMP B     //else jump to location 2; making a loop
-61  PMT D     //location foe execution
-63  CLL D     //call instruction in R4
+### code for OS at memory[30]
+30  LRI -- A   //load jump location in R1 - execute mode<br />
+33  LR1 -- B  //load jump location in R2 - programming loop<br />
+36  LAI 0        //Load 0 in AC<br />
+38  PMT C     //Prompt choice, 0 - execute, 1 - program mode<br />
+40  IEQ C    //If choice equal to 0<br />
+42  JIT A     //Jump if true to location 1<br />
+44  PMT D     //Prompt for starting adress of programm<br />
+46  OUT D     //echo starting adress<br />
+48  PMT E    //prompt for instruction<br />
+50  SET IndA<br />
+52  CPY E D  //store instruction in memory<br />
+55  RST IndA<br />
+57  INC D     //increment adress pointer<br />
+59  JMP B     //else jump to location 2; making a loop<br />
+61  PMT D     //location foe execution<br />
+63  CLL D     //call instruction in R4<br />
   
   
 
