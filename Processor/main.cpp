@@ -6,9 +6,12 @@
 //
 
 #include <iostream>
-
+#include <fstream>
+#include <string>
+#include "core.hpp"
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    core processor;
+    
+    processor.start_instruction_cycle();
     return 0;
 }
